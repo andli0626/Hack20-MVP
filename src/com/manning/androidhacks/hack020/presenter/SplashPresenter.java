@@ -4,10 +4,11 @@ import com.manning.androidhacks.hack020.presenter.model.IConnectionStatus;
 import com.manning.androidhacks.hack020.presenter.model.impl.ConnectionStatus;
 import com.manning.androidhacks.hack020.view.ISplashView;
 
+// 主导器
 public class SplashPresenter {
 
 	private IConnectionStatus mConnectionStatus;
-	private ISplashView mView;
+	private ISplashView 	  mView;
 
 	public SplashPresenter() {
 		this(new ConnectionStatus());
@@ -25,12 +26,15 @@ public class SplashPresenter {
 		return mView;
 	}
 
+	// 完成加载
 	public void didFinishLoading() {
 		ISplashView view = getView();
-
+		// 有网络
 		if (mConnectionStatus.isOnline()) {
 			view.moveToMainView();
-		} else {
+		} 
+		// 无网络
+		else {
 			view.hideProgress();
 			view.showNoInetErrorMsg();
 		}

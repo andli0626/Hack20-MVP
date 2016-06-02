@@ -13,41 +13,41 @@ import com.manning.androidhacks.hack020.view.ISplashView;
 
 public class SplashActivity extends Activity implements ISplashView {
 
-  private TextView mTextView;
-  private ProgressBar mProgressBar;
-  private SplashPresenter mPresenter = new SplashPresenter();
+	private TextView 		mTextView;
+	private ProgressBar 	mProgressBar;
+	private SplashPresenter mPresenter = new SplashPresenter();
 
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.splash);
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.splash);
 
-    mPresenter.setView(this);
+		mPresenter.setView(this);
 
-    mTextView = (TextView) findViewById(R.id.splash_text);
-    mProgressBar = (ProgressBar) findViewById(R.id.splash_progress_bar);
-  }
+		mTextView 		= (TextView) findViewById(R.id.splash_text);
+		mProgressBar 	= (ProgressBar) findViewById(R.id.splash_progress_bar);
+	}
 
-  @Override
-  protected void onResume() {
-    super.onResume();
-    mPresenter.didFinishLoading();
-  }
+	@Override
+	protected void onResume() {
+		super.onResume();
+		mPresenter.didFinishLoading();
+	}
 
-  public void showProgress() {
-    mProgressBar.setVisibility(View.VISIBLE);
-  }
+	public void showProgress() {
+		mProgressBar.setVisibility(View.VISIBLE);
+	}
 
-  public void hideProgress() {
-    mProgressBar.setVisibility(View.INVISIBLE);
-  }
+	public void hideProgress() {
+		mProgressBar.setVisibility(View.INVISIBLE);
+	}
 
-  public void showNoInetErrorMsg() {
-    mTextView.setText("No internet");
-  }
+	public void showNoInetErrorMsg() {
+		mTextView.setText("No internet");
+	}
 
-  @Override
-  public void moveToMainView() {
-    startActivity(new Intent(this, MainActivity.class));
-  }
+	@Override
+	public void moveToMainView() {
+		startActivity(new Intent(this, MainActivity.class));
+	}
 }
